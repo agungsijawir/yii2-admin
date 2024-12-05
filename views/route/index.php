@@ -18,7 +18,8 @@ $opts = Json::htmlEncode([
 ]);
 $this->registerJs("var _opts = {$opts};");
 $this->registerJs($this->render('_script.js'));
-$animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
+$animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display:none;"></i>';
+
 ?>
 <h1><?=Html::encode($this->title);?></h1>
 <div class="row">
@@ -42,10 +43,11 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
             <input class="form-control search" data-target="available"
                    placeholder="<?=Yii::t('rbac-admin', 'Search for available');?>">
             <span class="input-group-btn">
-                <?=Html::a('<span class="glyphicon glyphicon-refresh"></span>', ['refresh'], [
-    'class' => 'btn btn-default',
+                <?= Html::a('<i class="bi bi-arrow-repeat"></i>', ['refresh'], [
+    'class' => 'btn btn-secondary',
     'id' => 'btn-refresh',
-]);?>
+    'onclick' => "$(this).find('i').addClass('spinner-border spinner-border-sm');", // Efek animasi saat diklik
+]); ?>
             </span>
         </div>
         <select multiple size="20" class="form-control list" data-target="available"></select>

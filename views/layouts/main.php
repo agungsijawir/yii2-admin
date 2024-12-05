@@ -7,8 +7,11 @@ use yii\helpers\Html;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+AppAsset::register($this);
 list(,$url) = Yii::$app->assetManager->publish('@mdm/admin/assets');
 $this->registerCssFile($url.'/main.css');
+$this->registerCssFile('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css');
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -18,7 +21,7 @@ $this->registerCssFile($url.'/main.css');
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
+        <?php $this->head() ?> 
     </head>
     <body>
         <?php $this->beginBody() ?>
