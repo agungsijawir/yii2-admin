@@ -1,17 +1,25 @@
 {
-    "name": "freddokresna/yii2-admin-fkresna",
+    "name": "agungsijawir/yii2-admin",
     "description": "RBAC Auth manager for Yii2",
     "keywords": ["yii", "admin", "auth", "rbac"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "authors": [
         {
+            "name": "Misbahul Munir",
+            "email": "misbahuldmunir@gmail.com"
+        },
+        {
             "name": "Freddo Kresna",
             "email": "freddokresna@gmail.com"
+        },
+        {
+            "name": "Agung Andika",
+            "email": "agung@agungandika.com"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=8.0.0",
         "yiisoft/yii2": "~2.0.14"
     },
     "autoload": {
