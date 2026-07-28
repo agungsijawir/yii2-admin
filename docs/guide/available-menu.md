@@ -22,10 +22,10 @@ Role and Permission
 This sesction used for manage role/permission. You can create, delete or update role/permission from this menu.
 Adding and remove child of role can be doing there.
 
-![Role](/docs/images/image04.png)
-![Create Role](/docs/images/image05.png)
-![Add Child](/docs/images/image06.png)
-![Update Permission](/docs/images/image07.png)
+![Role](../images/image04.png)
+![Create Role](../images/image05.png)
+![Add Child](../images/image06.png)
+![Update Permission](../images/image07.png)
 
 Rule
 ----

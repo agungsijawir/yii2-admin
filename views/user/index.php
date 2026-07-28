@@ -1,7 +1,9 @@
 <?php
 
+use app\widgets\SilolaGridView as SilolaGridViewAlias;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap5\LinkPager;
 use mdm\admin\components\Helper;
 
 /* @var $this yii\web\View */
@@ -13,10 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?=
-    GridView::widget([
+    SilolaGridViewAlias::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -25,12 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             [
                 'attribute' => 'status',
+                'format' => 'raw',
                 'value' => function($model) {
-                    return $model->status == 0 ? 'Inactive' : 'Active';
+                    return $model->status == 0 ? '<span class="badge bg-danger">Non-Aktif</span>': '<span class="badge bg-success">Aktif</span>';
                 },
                 'filter' => [
-                    0 => 'Inactive',
-                    10 => 'Active'
+                    0 => 'Non-Aktif',
+                    10 => 'Aktif'
                 ]
             ],
             [
@@ -42,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return '';
                         }
                         $options = [
-                            'title' => Yii::t('rbac-admin', 'Activate'),
+                            'title' => Yii::t('rbac-admin', ''),
                             'aria-label' => Yii::t('rbac-admin', 'Activate'),
                             'data-confirm' => Yii::t('rbac-admin', 'Are you sure you want to activate this user?'),
                             'data-method' => 'post',
@@ -50,9 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         ];
                         return Html::a('<span class="bi bi-check"></span>', $url, $options);
                     }
-                    ]
-                ],
+                ]
             ],
-        ]);
+        ]]);
         ?>
 </div>

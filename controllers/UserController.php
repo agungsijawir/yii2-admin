@@ -25,6 +25,7 @@ use yii\web\NotFoundHttpException;
 class UserController extends Controller
 {
     private $_oldMailPath;
+    public $layout = '@app/views/layouts/main';
 
     /**
      * @inheritdoc
@@ -105,6 +106,7 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+        // TODO: Perform soft-delete rather than hard-delete
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -116,6 +118,7 @@ class UserController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = '@app/views/layouts/login';
         if (!Yii::$app->getUser()->isGuest) {
             return $this->goHome();
         }
@@ -139,24 +142,6 @@ class UserController extends Controller
         Yii::$app->getUser()->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Signup new user
-     * @return string
-     */
-    public function actionSignup()
-    {
-        $model = new Signup();
-        if ($model->load(Yii::$app->getRequest()->post())) {
-            if ($user = $model->signup()) {
-                return $this->goHome();
-            }
-        }
-
-        return $this->render('signup', [
-                'model' => $model,
-        ]);
     }
 
     /**
@@ -241,6 +226,14 @@ class UserController extends Controller
             }
         }
         return $this->goHome();
+    }
+
+    public function actionTest() {
+
+        $user = Yii::$app->getUser();
+        $userId = $user instanceof \yii\web\User ? $user->getId() : $user;
+
+        var_dump($user->can('admin'));
     }
 
     /**
