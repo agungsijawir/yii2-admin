@@ -21,7 +21,6 @@ $this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display:none;"></i>';
 
 ?>
-<h1><?=Html::encode($this->title);?></h1>
 <div class="row">
     <div class="col-sm-11">
         <div class="input-group">
@@ -50,7 +49,7 @@ $animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display:none;
 ]); ?>
             </span>
         </div>
-        <select multiple size="20" class="form-control list" data-target="available"></select>
+        <select multiple size="20" class="form-control list" data-target="available" style="height: 400px;"></select>
     </div>
     <div class="col-sm-1">
         <br><br>
@@ -68,6 +67,6 @@ $animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display:none;
     <div class="col-sm-5">
         <input class="form-control search" data-target="assigned"
                placeholder="<?=Yii::t('rbac-admin', 'Search for assigned');?>">
-        <select multiple size="20" class="form-control list" data-target="assigned"></select>
+        <select multiple size="20" class="form-control list" data-target="assigned" style="height: 400px;"></select>
     </div>
 </div>

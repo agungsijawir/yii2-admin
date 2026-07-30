@@ -20,6 +20,7 @@ return [
     'Activate' => 'Mengaktifkan',
     'Add' => 'Tambah',
     'Assignments' => 'Penugasan',
+    'Assigned users' => 'Penugasan Peran / Pengguna',
     'Users' => 'Pengguna',
     'User' => 'Pemakai',
     'Change' => 'Ganti',

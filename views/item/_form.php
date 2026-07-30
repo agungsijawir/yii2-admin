@@ -47,6 +47,7 @@ $this->registerJs($js);
             'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
             'name' => 'submit-button'])
         ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Cancel'), ['index'], ['class' => 'btn btn-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

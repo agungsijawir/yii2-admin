@@ -74,14 +74,14 @@ function search(target) {
 function listUsers() {
     var $list = $('#list-users');
     var users = _opts.users.users.map(function (user) {
-        return `<span class="label label-info"><a href="${user.link}">${user.username}</a></span>`;
+        return `<span class="badge rounded-pill text-bg-light"><a href="${user.link}">${user.username}</a></span>`;
     });
     users.push('<br>');
     if (_opts.users.prev) {
-        users.push(`<span class="label label-primary"><a href="#" data-target="${_opts.users.prev}">&laquo;</a></span>`);
+        users.push(`<span class="badge rounded-pill text-bg-dark"><a href="#" data-target="${_opts.users.prev}">&laquo;</a></span>`);
     }
     if (_opts.users.next) {
-        users.push(`<span class="label label-primary"><a href="#" data-target="${_opts.users.next}">&raquo;</a></span>`);
+        users.push(`<span class="badge rounded-pill text-bg-dark"><a href="#" data-target="${_opts.users.next}">&raquo;</a></span>`);
     }
     $list.html(users.join(' '));
 }

@@ -25,7 +25,7 @@ use yii\web\NotFoundHttpException;
 class UserController extends Controller
 {
     private $_oldMailPath;
-    public $layout = '@app/views/layouts/main';
+    //public $layout = '@app/views/layouts/main';
 
     /**
      * @inheritdoc
@@ -77,10 +77,11 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = '@app/views/layouts/security';
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('/user/index', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
         ]);
@@ -226,14 +227,6 @@ class UserController extends Controller
             }
         }
         return $this->goHome();
-    }
-
-    public function actionTest() {
-
-        $user = Yii::$app->getUser();
-        $userId = $user instanceof \yii\web\User ? $user->getId() : $user;
-
-        var_dump($user->can('admin'));
     }
 
     /**

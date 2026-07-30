@@ -1,5 +1,6 @@
 <?php
 
+use app\widgets\SilolaGridView;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -26,17 +27,13 @@ $columns[] = [
 ];
 ?>
 <div class="assignment-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?php Pjax::begin(); ?>
     <?=
-    GridView::widget([
+    SilolaGridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $columns,
     ]);
     ?>
     <?php Pjax::end(); ?>
-
 </div>
