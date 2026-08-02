@@ -88,7 +88,7 @@ $animateIcon = ' <i class="bi bi-arrow-repeat refresh-icon"></i>';
                     'title' => Yii::t('rbac-admin', 'Assign'),
                 ]);?>
 
-                <?=Html::a('&lt;&lt;' . $animateIcon . ' Revoke', ['assign', 'id' => $model->name], [
+                <?=Html::a('&lt;&lt;' . $animateIcon . ' Revoke', ['remove', 'id' => $model->name], [
                     'class' => 'btn btn-danger btn-assign',
                     'data-target' => 'assigned',
                     'title' => Yii::t('rbac-admin', 'Remove'),
