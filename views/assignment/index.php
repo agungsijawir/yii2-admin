@@ -1,5 +1,6 @@
 <?php
 
+use app\widgets\SilolaDataActionColumnWidget;
 use app\widgets\SilolaGridView;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -22,7 +23,7 @@ if (!empty($extraColumns)) {
     $columns = array_merge($columns, $extraColumns);
 }
 $columns[] = [
-    'class' => 'yii\grid\ActionColumn',
+    'class' => SilolaDataActionColumnWidget::class,
     'template' => '{view}'
 ];
 ?>

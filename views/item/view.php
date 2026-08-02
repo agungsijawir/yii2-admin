@@ -29,7 +29,7 @@ $opts = Json::htmlEncode([
     ]);
 $this->registerJs("var _opts = {$opts};");
 $this->registerJs($this->render('_script.js'));
-$animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display: none;"></i>';
+$animateIcon = ' <i class="bi bi-arrow-repeat refresh-icon"></i>';
 
 ?>
 <div class="auth-item-view">
@@ -45,7 +45,7 @@ $animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display: none
         <?= Html::a(Yii::t('rbac-admin', 'Create'), ['create'], ['class' => 'btn btn-success']); ?>
     </p>
     <div class="row">
-        <div class="col-sm-11">
+        <div class="col-sm-12">
             <?=
             DetailView::widget([
                 'model' => $model,
@@ -61,7 +61,7 @@ $animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display: none
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-11">
+        <div class="col-sm-12">
             <table class="table table-striped table-bordered">
                 <tbody>
                     <tr>
@@ -80,22 +80,20 @@ $animateIcon = ' <i class="bi bi-arrow-repeat spinner-icon" style="display: none
                    placeholder="<?= Yii::t('rbac-admin', 'Search for available'); ?>">
             <select multiple size="20" class="form-control list" data-target="available" style="height: 400px;"></select>
         </div>
-        <div class="col-sm-1">
-            <br><br>
-            <?=
-            Html::a('&gt;&gt;' . $animateIcon, ['assign', 'id' => $model->name], [
-                'class' => 'btn btn-success btn-assign',
-                'data-target' => 'available',
-                'title' => Yii::t('rbac-admin', 'Assign'),
-            ]);
-            ?><br><br>
-            <?=
-            Html::a('&lt;&lt;' . $animateIcon, ['remove', 'id' => $model->name], [
-                'class' => 'btn btn-danger btn-assign',
-                'data-target' => 'assigned',
-                'title' => Yii::t('rbac-admin', 'Remove'),
-            ]);
-            ?>
+        <div class="col-sm-2">
+            <div class="d-grid gap-2 mx-auto">
+                <?=Html::a('&gt;&gt;' . $animateIcon . ' Assign', ['assign', 'id' => $model->name], [
+                    'class' => 'btn btn-success btn-assign',
+                    'data-target' => 'available',
+                    'title' => Yii::t('rbac-admin', 'Assign'),
+                ]);?>
+
+                <?=Html::a('&lt;&lt;' . $animateIcon . ' Revoke', ['assign', 'id' => $model->name], [
+                    'class' => 'btn btn-danger btn-assign',
+                    'data-target' => 'assigned',
+                    'title' => Yii::t('rbac-admin', 'Remove'),
+                ]);?>
+            </div>
         </div>
         <div class="col-sm-5">
             <input class="form-control search" data-target="assigned"

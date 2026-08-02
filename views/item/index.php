@@ -1,5 +1,7 @@
 <?php
 
+use app\widgets\SilolaDataActionColumnWidget;
+use app\widgets\SilolaGridView;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use mdm\admin\components\RouteRule;
@@ -21,10 +23,10 @@ unset($rules[RouteRule::RULE_NAME]);
 ?>
 <div class="role-index">
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Create ' . $labels['Item']), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="bi bi-person-plus"></i> ' . Yii::t('rbac-admin', 'Create ' . $labels['Item']), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?=
-    \app\widgets\SilolaGridView::widget([
+    SilolaGridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -42,7 +44,7 @@ unset($rules[RouteRule::RULE_NAME]);
                 'attribute' => 'description',
                 'label' => Yii::t('rbac-admin', 'Description'),
             ],
-            ['class' => 'yii\grid\ActionColumn',],
+            ['class' => SilolaDataActionColumnWidget::class],
         ],
     ])
     ?>

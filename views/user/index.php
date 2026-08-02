@@ -1,5 +1,6 @@
 <?php
 
+use app\widgets\SilolaDataActionColumnWidget;
 use app\widgets\SilolaGridView;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -36,23 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ],
                     [
-                        'class' => 'yii\grid\ActionColumn',
+                        'class' => SilolaDataActionColumnWidget::class,
                         'template' => Helper::filterActionColumn(['view', 'activate', 'delete']),
-                        'buttons' => [
-                            'activate' => function($url, $model) {
-                                if ($model->status == 10) {
-                                    return '';
-                                }
-                                $options = [
-                                    'title' => Yii::t('rbac-admin', ''),
-                                    'aria-label' => Yii::t('rbac-admin', 'Activate'),
-                                    'data-confirm' => Yii::t('rbac-admin', 'Are you sure you want to activate this user?'),
-                                    'data-method' => 'post',
-                                    'data-pjax' => '0',
-                                ];
-                                return Html::a('<span class="bi bi-check"></span>', $url, $options);
-                            }
-                        ]
                     ],
                 ]]);
             ?>
